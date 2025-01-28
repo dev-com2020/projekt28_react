@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import './App.css'
+import {HelmetProvider,Helmet} from "react-helmet-async";
 
 function App() {
     const initialPosts = [
@@ -39,6 +40,13 @@ function App() {
     return (
         <>
             <div>
+                <HelmetProvider>
+                <Helmet>
+                    <title>Testowy nagłówek z helmet</title>
+                    <meta charSet="utf-8" />
+                    <meta name="keywords" content="SEO, Helmet, React"/>
+                </Helmet>
+                </HelmetProvider>
                 <form onSubmit={handleSubmit}>
                     <textarea value={postContent} onChange={(e) => setPostContent(e.target.value)}/>
                     <input type="submit" value="Submit"/>
