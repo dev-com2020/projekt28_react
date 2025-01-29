@@ -4,10 +4,18 @@ import helmet from "helmet";
 import cors from "cors";
 import path from "path";
 import {fileURLToPath} from 'url';
-import services from "./services/index.js";
+import servicesLoader from './services/index.js';
 import dotenv from 'dotenv';
+import db from "./models/index.cjs";
+
 
 dotenv.config();
+
+const utils = {
+    db,
+}
+
+const services = servicesLoader(utils)
 
 const app = express()
 

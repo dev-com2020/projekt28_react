@@ -1,42 +1,28 @@
 import logger from "../../helpers/logger.js";
 
-let posts = [
-    {
-        id: 1,
-        text: 'Hello',
-        user: {
-            avatar: 'https://avatars1.githubusercontent.com/u/55',
-            username: 'John',
-        }
-    },
-    {
-        id: 2,
-        text: 'Hello...',
-        user: {
-            avatar: 'https://avatars1.githubusercontent.com/u/55',
-            username: 'Tomasz',
-        }
-    }
-]
+export default function resolvers() {
 
-const resolvers = {
-    RootQuery: {
-        posts(root,args,context){
-            return posts
-        },
-    },
-    RootMutation: {
-        addPost(root, { post, user }, context){
-            const postObject = {
-                ...post,
-                user,
-                id: posts.length + 1
-            }
-            posts.push(postObject)
-            logger.log({level: 'info', message: `Added ${posts.length} posts`})
-            return postObject
-        },
-    },
-};
+    const {db} = this;
+    const Post  = db.Post;
 
-export default resolvers;
+    const resolvers = {
+        RootQuery: {
+            posts(root, args, context) {
+                return Post.findAll({})
+            },
+        },
+        RootMutation: {
+            addPost(root, {post, user}, context) {
+                const postObject = {
+                    ...post,
+                    user,
+                    id: posts.length + 1
+                }
+                posts.push(postObject)
+                logger.log({level: 'info', message: `Added ${posts.length} posts`})
+                return postObject
+            },
+        },
+    };
+    return resolvers;
+}

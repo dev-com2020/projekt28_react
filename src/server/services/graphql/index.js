@@ -3,14 +3,15 @@ import Schema from './schema.js'
 import Resolvers from './resolvers.js'
 import {ApolloServer} from "apollo-server-express";
 
-const executableSchema = makeExecutableSchema({
-    typeDefs: Schema,
-    resolvers: Resolvers
-})
+export default (utils) => {
+    const executableSchema = makeExecutableSchema({
+        typeDefs: Schema,
+        resolvers: Resolvers.call(utils),
+    })
 
-const server = new ApolloServer({
-    schema: executableSchema,
-    context: ({ req }) => req
-})
-
-export default server;
+    const server = new ApolloServer({
+        schema: executableSchema,
+        context: ({req}) => req
+    })
+    return server;
+}
