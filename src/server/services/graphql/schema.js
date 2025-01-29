@@ -6,6 +6,7 @@ type Post {
     }
     
 type User {
+    id: Int
     avatar: String
     username: String
 }
@@ -14,10 +15,6 @@ type RootQuery {
     posts: [Post]
 }
 
-input UserInput {
-    username: String!
-    avatar: String!
-}
 
 input PostInput {
     text: String!
@@ -26,7 +23,6 @@ input PostInput {
 type RootMutation {
     addPost(
     post: PostInput!
-    user: UserInput!
     ): Post
 }
 

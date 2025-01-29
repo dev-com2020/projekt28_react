@@ -3,7 +3,8 @@ import logger from "../../helpers/logger.js";
 export default function resolvers() {
 
     const {db} = this;
-    const Post  = db.Post;
+    const Post = db.Post;
+    const User = db.User;
 
     const resolvers = {
         RootQuery: {
@@ -15,24 +16,32 @@ export default function resolvers() {
                 });
             }
         },
-            Post: {
-                user(root, args, context) {
-                    return post.getUser();
-                },
+        Post: {
+            user(post, args, context) {
+                return post.getUser();
             },
-            RootMutation: {
-                addPost(root, {post, user}, context) {
-                    const postObject = {
+        },
+        RootMutation: {
+            addPost(root, {post}, context) {
+                return User.findAll().then((users) => {
+                    const usersRow = users[0]
+                    return Post.create({
                         ...post,
-                        user,
-                        id: posts.length + 1
-                    }
-                    posts.push(postObject)
-                    logger.log({level: 'info', message: `Added ${posts.length} posts`})
-                    return postObject
-                },
+                    }).then((newPost) => {
+                        return Promise.all([
+                            newPost.setUser(usersRow.id),
+                        ]).then(() => {
+                            logger.log({
+                                level: 'info',
+                                message: "Utworzono post",
+                            })
+                            return newPost;
+                        })
+                    })
+                })
             },
-        };
+        },
+    };
 
     return resolvers;
 }
