@@ -30,10 +30,10 @@ const resolvers = {
             const postObject = {
                 ...post,
                 user,
-                id: post.length + 1
+                id: posts.length + 1
             }
             posts.push(postObject)
-            logger.log({level: 'info', message: `Added ${post.length} posts`})
+            logger.log({level: 'info', message: `Added ${posts.length} posts`})
             return postObject
         },
     },
