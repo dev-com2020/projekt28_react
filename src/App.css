@@ -1,42 +1,125 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Resetowanie domyślnych stylów */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Globalne ustawienia */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: black; /* ✅ Zmiana na czarny kolor czcionki */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ✅ Pełna wysokość ekranu */
+}
+
+/* Kontener główny */
+.container {
+  width: 600px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center; /* ✅ Wyśrodkowanie treści */
+}
+
+/* Pasek nawigacyjny */
+.navbar {
+  background-color: #1877f2;
+  color: black; /* ✅ Kolor czcionki ustawiony na czarny */
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Pole do wpisywania posta */
+.post-box {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.post-input {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Przycisk publikowania */
+.submit-button {
+  background-color: #1877f2;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
-.card {
-  padding: 2em;
+.submit-button:hover {
+  background-color: #145dbf;
 }
 
-.read-the-docs {
-  color: #888;
+/* Lista postów */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Styl pojedynczego posta */
+.post {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  text-align: left; /* ✅ Tekst postów wyrównany do lewej */
+}
+
+.post:hover {
+  transform: scale(1.02);
+}
+
+/* Nagłówek posta */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Avatar użytkownika */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #1877f2;
+}
+
+.username {
+  font-size: 20px;
+  color: black; /* ✅ Upewnienie się, że nazwa użytkownika ma czarny kolor */
+  font-weight: bold;
+}
+
+/* Tekst posta */
+.post-text {
+  font-size: 18px;
+  color: black; /* ✅ Tekst posta czarny */
+  line-height: 1.4;
 }
