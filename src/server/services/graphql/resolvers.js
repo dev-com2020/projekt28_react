@@ -1,3 +1,4 @@
+import logger from "../../helpers/logger.js";
 
 let posts = [
     {
@@ -32,6 +33,7 @@ const resolvers = {
                 id: post.length + 1
             }
             posts.push(postObject)
+            logger.log({level: 'info', message: `Added ${post.length} posts`})
             return postObject
         },
     },
