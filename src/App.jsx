@@ -1,6 +1,7 @@
 import "./App.css";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import Feed from "./client/Feed.jsx";
+import Chats from "./client/Chats.jsx";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
                 </Helmet>
             </HelmetProvider>
             <Feed/>
+            <Chats/>
             </>
     )
 
