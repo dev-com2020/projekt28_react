@@ -77,6 +77,39 @@ export default function resolvers() {
         },
 
             RootMutation: {
+                addChat(root, {chat}, context) {
+                    return Chat.create().then((newChat) => {
+                            return Promise.all([
+                                newChat.setUsers(chat.users),
+                            ]).then(() => {
+                                logger.log({
+                                    level: 'info',
+                                    message: "Utworzono czat",
+                                })
+                                return newChat;
+                            })
+                        })
+                    },
+                addMessage(root, {message}, context) {
+                    return User.findAll().then((users) => {
+                        const usersRow = users[0];
+
+                        return Message.create({
+                            ...message,
+                        }).then((newMessage) => {
+                            return Promise.all([
+                                newMessage.setUser(usersRow.id),
+                                newMessage.setChat(message.chatId)
+                            ]).then(() => {
+                                logger.log({
+                                    level: 'info',
+                                    message: "Wiadomość wysłana",
+                                })
+                                return newMessage;
+                            })
+                        })
+                    })
+                },
                 addPost(root, {post}, context) {
                     return User.findAll().then((users) => {
                         const usersRow = users[0]
@@ -94,12 +127,9 @@ export default function resolvers() {
                             })
                         })
                     })
-                }
-                ,
-            }
-            ,
-        }
-        ;
+                },
+            },
+        };
 
         return resolvers;
     }
