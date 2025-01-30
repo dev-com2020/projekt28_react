@@ -11,8 +11,23 @@ type User {
     username: String
 }
 
+type Message {
+    id: Int
+    text: String
+    user: User
+    chat: Chat
+}
+
+type Chat {
+    id: Int
+    messages: [Message]
+    users: [User]
+}
+
 type RootQuery {
     posts: [Post]
+    chats: [Chat]
+    chat(chatId: Int): Chat
 }
 
 
