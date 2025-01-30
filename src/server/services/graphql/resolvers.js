@@ -62,7 +62,7 @@ export default function resolvers() {
                     })
                 })
             },
-            chat(root, chatId, context) {
+            chat(root, {chatId}, context) {
                 return Chat.findByPk(chatId, {
                     include: [{
                         model: User,

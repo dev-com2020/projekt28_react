@@ -15,15 +15,17 @@ module.exports = {
             const users = rows[0][0]
             const chats = rows[1][0]
 
-            return queryInterface.bulkInsert('users_chats', [{
+            return queryInterface.bulkInsert('messages', [{
                     userId: users[0].id,
                     chatId: chats[0].id,
+                    text: 'to jest wiadomość nr 1',
                     createdAt: new Date(),
                     updatedAt: new Date(),
                 },
                     {
                         userId: users[1].id,
                         chatId: chats[0].id,
+                        text: 'to jest wiadomość nr 2',
                         createdAt: new Date(),
                         updatedAt: new Date(),
                     }],
@@ -33,6 +35,6 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('users_chats', null, {})
+        return queryInterface.bulkDelete('messages', null, {})
     }
 };
