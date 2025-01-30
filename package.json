@@ -11,6 +11,7 @@
     "server": "nodemon --watch src/server src/server/index.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.8",
     "@graphql-tools/schema": "^10.0.16",
     "apollo-server-express": "^3.13.0",
     "compression": "^1.7.5",
