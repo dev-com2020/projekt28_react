@@ -27,8 +27,20 @@ const ADD_POST = gql`
 `;
 
 const Feed = () => {
-    const {loading, error, data} = useQuery(GET_POSTS);
-    const [addPost] = useMutation(ADD_POST);
+    const {loading, error, data} = useQuery(GET_POSTS, {pollInterval: 5000});
+
+    // const [addPost] = useMutation(ADD_POST, {
+    //     refetchQueries: [{query:GET_POSTS}],
+    // });
+
+    const [addPost] = useMutation(ADD_POST, {
+        update(cache, {data: {addPost}}) {
+            const data = cache.readQuery({query: GET_POSTS});
+            const newData = {posts: [addPost, ...data.posts]};
+            cache.writeQuery({query: GET_POSTS, data: newData});
+        }
+    });
+
     const [postContent, setPostContent] = useState("");
 
     const handleSubmit = (event) => {
@@ -47,8 +59,8 @@ const Feed = () => {
             <HelmetProvider>
                 <Helmet>
                     <title>Facebook Feed clone</title>
-                    <meta charSet="utf-8" />
-                    <meta name="keywords" content="Facebook, React, Social Media" />
+                    <meta charSet="utf-8"/>
+                    <meta name="keywords" content="Facebook, React, Social Media"/>
                 </Helmet>
             </HelmetProvider>
 
