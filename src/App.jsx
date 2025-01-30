@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { HelmetProvider, Helmet } from "react-helmet-async";
+import Feed from "./client/Feed.js";
 
 function App() {
     const initialPosts = [
@@ -55,6 +56,7 @@ function App() {
                     <meta name="keywords" content="Facebook, React, Social Media" />
                 </Helmet>
             </HelmetProvider>
+            <Feed/>
 
             <div className="container">
                 <header className="navbar">
