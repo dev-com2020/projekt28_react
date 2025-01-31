@@ -7,14 +7,14 @@ module.exports = {
     return queryInterface.bulkInsert('users', [{
           avatar: 'uploads/avatar.png',
           username: "TestUser",
-          createdAt: new Date(),
-          updatedAt: new Date(),
+          created_at: new Date(),
+          updated_at: new Date(),
         },
           {
             avatar: 'uploads/avatar.png',
             username: "TestUser_2",
-            createdAt: new Date(),
-            updatedAt: new Date(),
+            created_at: new Date(),
+            updated_at: new Date(),
           }],
         {}
     )

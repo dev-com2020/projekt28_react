@@ -5,11 +5,11 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
    return Promise.all([
        queryInterface.addColumn('posts',
-           'userId',{
+           'user_id',{
          type: Sequelize.INTEGER,
            }),
        queryInterface.addConstraint('posts', {
-         fields: ['userId'],
+         fields: ['user_id'],
          type: 'foreign key',
          name: 'fk_user_id',
          references: {
@@ -24,7 +24,7 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
       return Promise.all([
-          queryInterface.removeColumn('posts', 'userId'),
+          queryInterface.removeColumn('posts', 'user_id'),
       ])
   }
 };
