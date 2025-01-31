@@ -30,7 +30,7 @@ const Chats = () => {
                             <h3>Users:</h3>
                             {chat.users.map((user) => (
                                 <div key={"user" + user.id} className="user-item">
-                                    {user.avatar && <img src={user.avatar} alt={`${user.username}'s avatar`} className="user-avatar" />}
+                                    {user.avatar && <img src={user.avatar} className="user-avatar" />}
                                     <span>{user.username}</span>
                                 </div>
                             ))}
