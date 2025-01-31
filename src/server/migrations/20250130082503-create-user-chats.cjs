@@ -8,29 +8,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'users',
           key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade',
       },
-      chatId: {
+      chat_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Chats',
+          model: 'chats',
           key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade',
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

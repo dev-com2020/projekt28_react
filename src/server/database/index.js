@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 
-const sequelize = new Sequelize('graphbook_dev','root','', {
-    host: 'localhost',
+const sequelize = new Sequelize('graphbook','root','admin123', {
+    host: 'graphbook.cvsk8888uclg.eu-north-1.rds.amazonaws.com',
     dialect: 'mysql',
     port: 3306,
     poll: {

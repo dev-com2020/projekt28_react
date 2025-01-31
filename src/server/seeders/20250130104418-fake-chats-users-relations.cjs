@@ -16,16 +16,16 @@ module.exports = {
             const chats = rows[1][0]
 
             return queryInterface.bulkInsert('users_chats', [{
-                    userId: users[0].id,
-                    chatId: chats[0].id,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
+                    user_id: users[0].id,
+                    chat_id: chats[0].id,
+                    created_at: new Date(),
+                    updated_at: new Date(),
                 },
                     {
-                        userId: users[1].id,
-                        chatId: chats[0].id,
-                        createdAt: new Date(),
-                        updatedAt: new Date(),
+                        user_id: users[1].id,
+                        chat_id: chats[0].id,
+                        created_at: new Date(),
+                        updated_at: new Date(),
                     }],
                 {}
             )

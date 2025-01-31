@@ -16,18 +16,18 @@ module.exports = {
             const chats = rows[1][0]
 
             return queryInterface.bulkInsert('messages', [{
-                    userId: users[0].id,
-                    chatId: chats[0].id,
+                    user_id: users[0].id,
+                    chat_id: chats[0].id,
                     text: 'to jest wiadomość nr 1',
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
+                    created_at: new Date(),
+                    updated_at: new Date(),
                 },
                     {
-                        userId: users[1].id,
-                        chatId: chats[0].id,
+                        user_id: users[1].id,
+                        chat_id: chats[0].id,
                         text: 'to jest wiadomość nr 2',
-                        createdAt: new Date(),
-                        updatedAt: new Date(),
+                        created_at: new Date(),
+                        updated_at: new Date(),
                     }],
                 {}
             )
