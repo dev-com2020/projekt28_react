@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "src/server/index.js"
+    "server": "nodemon --watch src/server src/server/index.js"
   },
   "dependencies": {
     "@apollo/client": "^3.12.8",
